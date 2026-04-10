@@ -1,10 +1,22 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center text-center px-6">
 
-      <h1 className="text-4xl font-bold mt-20">
+      {/* LOGO */}
+      <div className="mt-16 mb-6">
+        <Image
+          src="/medivisioneyecare.png"
+          alt="Medivision Eye Care"
+          width={120}
+          height={120}
+          className="mx-auto"
+        />
+      </div>
+
+      <h1 className="text-3xl font-bold">
         Medivision Care Intelligence
       </h1>
 
@@ -27,6 +39,7 @@ export default function Home() {
         </Link>
 
       </div>
+
     </main>
   );
 }
