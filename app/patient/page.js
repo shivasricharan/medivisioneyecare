@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { doctorGroups } from "../../lib/doctors";
 
 export default function PatientPage() {
@@ -22,21 +23,35 @@ export default function PatientPage() {
     setSubmitted(true);
   };
 
+  // ✅ THANK YOU STATE
   if (submitted) {
     return (
       <main className="p-6 max-w-md mx-auto text-center">
+
+        {/* HOME LINK */}
+        <Link href="/" className="text-sm text-gray-400 mb-6 inline-block">
+          ← Home
+        </Link>
+
         <h1 className="text-2xl font-semibold mb-4">
           Thank you 🙏
         </h1>
+
         <p className="text-gray-400">
           Your feedback helps us improve care for every patient.
         </p>
+
       </main>
     );
   }
 
   return (
     <main className="p-6 max-w-md mx-auto">
+
+      {/* HOME LINK */}
+      <Link href="/" className="text-sm text-gray-400 mb-4 inline-block">
+        ← Home
+      </Link>
 
       <h1 className="text-2xl font-semibold mb-2">
         Quick Care Feedback
@@ -89,13 +104,14 @@ export default function PatientPage() {
         onChange={(e) => update("note", e.target.value)}
       />
 
-      {/* UPDATED BUTTON */}
+      {/* Submit */}
       <button
         onClick={submit}
         className="w-full py-4 mt-4 rounded-xl bg-white text-black"
       >
         Submit Feedback
       </button>
+
     </main>
   );
 }
