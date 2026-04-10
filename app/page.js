@@ -12,23 +12,30 @@ export default function Home() {
           alt="Medivision Eye Care"
           width={120}
           height={120}
-          className="mx-auto"
+          className="mx-auto rounded-xl shadow-lg"
         />
       </div>
 
+      {/* NEW HEADLINE */}
       <h1 className="text-3xl font-bold">
-        Medivision Care Intelligence
+        Help us improve your care experience
       </h1>
 
-      <p className="text-gray-400 mt-4 max-w-md">
-        Understand patient experience instantly and improve care across every visit.
+      {/* SUBTEXT */}
+      <p className="text-gray-400 mt-3">
+        Takes less than 30 seconds
+      </p>
+
+      {/* CONTEXT LINE */}
+      <p className="text-gray-500 mt-2 max-w-md">
+        Your feedback helps our doctors and team serve you better
       </p>
 
       <div className="mt-10 flex flex-col gap-4 w-full max-w-sm">
 
         <Link href="/patient">
           <button className="glass w-full py-4 rounded-xl">
-            Patient Feedback
+            Share Feedback
           </button>
         </Link>
 
@@ -39,7 +46,6 @@ export default function Home() {
         </Link>
 
       </div>
-
     </main>
   );
 }

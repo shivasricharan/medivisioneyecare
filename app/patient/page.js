@@ -5,6 +5,8 @@ import { doctorGroups } from "../../lib/doctors";
 
 export default function PatientPage() {
   const [form, setForm] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+
   const doctors = doctorGroups[form.specialty] || [];
 
   const update = (key, value) => {
@@ -17,15 +19,32 @@ export default function PatientPage() {
       body: JSON.stringify({ ...form, type: "patient" })
     });
 
-    alert("Thank you 🙏");
+    setSubmitted(true);
   };
+
+  if (submitted) {
+    return (
+      <main className="p-6 max-w-md mx-auto text-center">
+        <h1 className="text-2xl font-semibold mb-4">
+          Thank you 🙏
+        </h1>
+        <p className="text-gray-400">
+          Your feedback helps us improve care for every patient.
+        </p>
+      </main>
+    );
+  }
 
   return (
     <main className="p-6 max-w-md mx-auto">
 
-      <h1 className="text-2xl font-semibold mb-6">
+      <h1 className="text-2xl font-semibold mb-2">
         Quick Care Feedback
       </h1>
+
+      <p className="text-gray-400 mb-6">
+        This will take less than 30 seconds
+      </p>
 
       {/* Specialty */}
       <div className="glass p-4 rounded-xl mb-4">
@@ -64,16 +83,18 @@ export default function PatientPage() {
         </div>
       ))}
 
+      {/* Note */}
       <textarea
         placeholder="Any improvement?"
         onChange={(e) => update("note", e.target.value)}
       />
 
+      {/* UPDATED BUTTON */}
       <button
         onClick={submit}
         className="w-full py-4 mt-4 rounded-xl bg-white text-black"
       >
-        Submit
+        Submit Feedback
       </button>
     </main>
   );

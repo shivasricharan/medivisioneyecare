@@ -2,9 +2,13 @@ export default function DoctorPage() {
   return (
     <main className="p-6 max-w-md mx-auto">
 
-      <h1 className="text-2xl font-semibold mb-6">
-        Doctor Insights (Sample)
-      </h1>
+      <h1 className="text-2xl font-semibold mb-2">
+  Doctor Insights
+</h1>
+
+<p className="text-gray-400 mb-6">
+  Sample insights based on patient feedback
+</p>
 
       <div className="glass p-4 rounded-xl mb-4">
         <p className="font-semibold">Dr Rupak Kumar Reddy</p>
