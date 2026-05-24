@@ -1,10 +1,11 @@
 import "./globals.css";
 import Image from "next/image";
 import Link from "next/link";
+import ThemeToggle from "../components/ThemeToggle";
 
 export const metadata = {
   title: "MediVision Eye Care — Share Your Experience",
-  description: "Quick, frictionless patient feedback for MediVision Eye Care Centre. No sign-in required."
+  description: "Quick, frictionless patient feedback for MediVision Eye Care Centre. No sign-in required.",
 };
 
 export default function RootLayout({ children }) {
@@ -20,10 +21,11 @@ export default function RootLayout({ children }) {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "13px 20px",
-          borderBottom: "1px solid #e2e8f0",
-          background: "#ffffff",
+          padding: "12px 20px",
+          borderBottom: "1px solid var(--border)",
+          background: "var(--surface)",
           flexShrink: 0,
+          transition: "background 0.25s ease, border-color 0.25s ease",
         }}>
           <Link href="/" style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}>
             <Image
@@ -34,20 +36,23 @@ export default function RootLayout({ children }) {
               style={{ borderRadius: "8px", flexShrink: 0 }}
             />
             <div>
-              <div style={{ fontWeight: "800", fontSize: "0.88rem", color: "#0f172a", lineHeight: 1.2, letterSpacing: "-0.01em" }}>
+              <div style={{ fontWeight: "800", fontSize: "0.88rem", color: "var(--text)", lineHeight: 1.2, letterSpacing: "-0.01em" }}>
                 MediVision
               </div>
-              <div style={{ fontSize: "0.6rem", color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+              <div style={{ fontSize: "0.6rem", color: "var(--text-light)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
                 Eye Care Centre
               </div>
             </div>
           </Link>
 
-          <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-            <div style={{ width: "6px", height: "6px", background: "#10b981", borderRadius: "50%" }} />
-            <span style={{ fontSize: "0.68rem", color: "#64748b", fontWeight: "500" }}>
-              Powered by <span style={{ color: "#1b4fbe", fontWeight: "800" }}>Vouch</span>
-            </span>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+              <div style={{ width: "6px", height: "6px", background: "#10b981", borderRadius: "50%" }} />
+              <span style={{ fontSize: "0.66rem", color: "var(--text-light)", fontWeight: "600" }}>
+                Powered by <span style={{ color: "#1b4fbe", fontWeight: "800" }}>Vouch</span>
+              </span>
+            </div>
+            <ThemeToggle />
           </div>
         </header>
 
@@ -58,17 +63,17 @@ export default function RootLayout({ children }) {
         <footer style={{
           textAlign: "center",
           padding: "18px 16px",
-          borderTop: "1px solid #f1f5f9",
+          borderTop: "1px solid var(--border)",
           fontSize: "0.72rem",
-          color: "#94a3b8",
+          color: "var(--text-light)",
           flexShrink: 0,
+          background: "var(--surface)",
+          transition: "background 0.25s ease",
         }}>
           Powered by <span style={{ color: "#1b4fbe", fontWeight: "800" }}>Vouch</span>
           {" "}· Patient intelligence for care teams
           <br />
-          <span style={{ color: "#cbd5e1" }}>
-            MediVision Eye Care Centre · Hyderabad
-          </span>
+          <span style={{ color: "var(--text-light)" }}>MediVision Eye Care Centre · Hyderabad</span>
         </footer>
 
       </body>

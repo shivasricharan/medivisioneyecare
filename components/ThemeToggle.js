@@ -3,18 +3,40 @@
 import { useEffect, useState } from "react";
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState("dark");
+  const [dark, setDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-  }, [theme]);
+    setMounted(true);
+    const saved = localStorage.getItem("mv-theme");
+    if (saved === "dark") {
+      setDark(true);
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  }, []);
+
+  const toggle = () => {
+    const next = !dark;
+    setDark(next);
+    if (next) {
+      document.documentElement.setAttribute("data-theme", "dark");
+      localStorage.setItem("mv-theme", "dark");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+      localStorage.setItem("mv-theme", "light");
+    }
+  };
+
+  if (!mounted) return <div style={{ width: 38, height: 38 }} />;
 
   return (
     <button
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="px-3 py-1 border rounded-lg"
+      onClick={toggle}
+      className="theme-toggle"
+      aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+      title={dark ? "Light mode" : "Dark mode"}
     >
-      {theme === "dark" ? "Light" : "Dark"}
+      {dark ? "☀️" : "🌙"}
     </button>
   );
 }
